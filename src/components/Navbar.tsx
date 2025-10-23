@@ -30,7 +30,6 @@ const Navbar: React.FC<NavbarProps> = ({ currency, onCurrencyChange }) => {
       <nav className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
         
         <h1 className="text-l font-semibold tracking-wide">Uncle Willy's Menu</h1>
-        <h2 className="text-sm font-semibold tracking-wide">Open from 5:00 PM to 11:00 PM</h2>
 
         <div className="relative" ref={dropdownRef}>
           <button

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
+
 
 const ReservationCard: React.FC = () => {
   const [guests, setGuests] = useState<number>(2);
@@ -39,17 +41,58 @@ const ReservationCard: React.FC = () => {
     new Date().setHours(0, 0, 0, 0)
   : true;
 
+  // handle emailJS submission
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!date || !email) {
-      alert("Please select a date and enter your email before submitting.");
-      return;
-    }
+  e.preventDefault();
+  if (!date || !email) {
+    alert("Please select a date and enter your email before submitting.");
+    return;
+  }
 
-    alert(
-      `Reservation Confirmed!\n\nGuests: ${guests}\nDate: ${formattedDate}\nTime: ${time}\nEmail: ${email}`
-    );
+  const formattedMessage = `
+    Reservation Confirmed!
+    Guests: ${guests}
+    Date: ${formattedDate}
+    Time: ${time}
+  `;
+
+  const templateParams = {
+    to_email: email,
+    message: formattedMessage,
+    guests,
+    date: formattedDate,
+    time,
   };
+
+  emailjs
+    .send(
+      "service_jt736ew",
+      "template_xt97v2j",
+      templateParams,
+      "EgFSeO4IXCeDPPWDL"
+    )
+    .then(() => {
+      alert(`Reservation confirmation sent to ${email}`);
+    })
+    .catch((error) => {
+      console.error("Email sending failed:", error);
+      alert("Something went wrong while sending the email.");
+    });
+};
+
+// alert for checking form data without emailJS
+
+//   const handleSubmit = (e: React.FormEvent) => {
+//     e.preventDefault();
+//     if (!date || !email) {
+//       alert("Please select a date and enter your email before submitting.");
+//       return;
+//     }
+
+//     alert(
+//       `Reservation Confirmed!\n\nGuests: ${guests}\nDate: ${formattedDate}\nTime: ${time}\nEmail: ${email}`
+//     );
+//   };
   
 
   return (

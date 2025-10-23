@@ -13,8 +13,12 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar currency={currency} onCurrencyChange={setCurrency} />
       <main className="p-4 pt-24">
-        <MenuList currency={currency} />
-        <ReservationCard /> 
+        <div>
+          <MenuList currency={currency} />
+        </div>
+        <div className="flex justify-start ml-8 mt-10">
+          <ReservationCard /> 
+        </div>
       </main>
     </div>
   );
