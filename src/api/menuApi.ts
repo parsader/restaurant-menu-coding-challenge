@@ -18,7 +18,7 @@ export const fetchMenuItems = async (): Promise<MenuItem[]> => {
       .then((res) => res.json())
       .then((data) =>
         data
-          .slice(0, 4)
+          .slice(0, 10)
           .map((item: MenuItem) => ({ ...item, type })) 
       )
       .catch(() => [])

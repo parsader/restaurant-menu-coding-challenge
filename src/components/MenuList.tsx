@@ -45,7 +45,7 @@ const MenuList: React.FC<MenuListProps> = ({ currency }) => {
       {Object.entries(groupedItems).map(([type, items]) => (
         <div key={type}>
           <h2 className="text-2xl font-bold capitalize text-gray-800 mb-4">{type}</h2>
-          <div className="flex overflow-x-auto gap-4 pb-2">
+          <div className="flex overflow-x-auto gap-4 pb-2 scrollbar-hide">
             {items.map((item) => (
               <MenuCard key={item.id} item={item} currency={currency} />
             ))}

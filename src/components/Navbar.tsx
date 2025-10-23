@@ -27,8 +27,8 @@ const Navbar: React.FC<NavbarProps> = ({ currency, onCurrencyChange }) => {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-indigo-600 text-white z-50 shadow-md backdrop-blur-sm bg-opacity-95">
-      <nav className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-        
+      <nav className="flex justify-between items-center px-6 py-4">
+
         <h1 className="text-l font-semibold tracking-wide">Uncle Willy's Menu</h1>
 
         <div className="relative" ref={dropdownRef}>
