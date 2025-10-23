@@ -1,5 +1,5 @@
 
-### Clone the repository
+### To run locally
 ```bash
 git clone https://github.com/yourusername/restaurant-menu-app.git
 
