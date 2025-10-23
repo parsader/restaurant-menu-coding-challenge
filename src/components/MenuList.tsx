@@ -2,12 +2,17 @@ import React, { useEffect, useState } from "react";
 import { fetchMenuItems } from "../api/menuApi";
 import type { MenuItem } from "../api/menuApi";
 import MenuCard from "./MenuCard";
+import type { Currency } from "../App";
+
+interface MenuListProps {
+  currency: Currency;
+}
 
 interface GroupedItems {
   [type: string]: MenuItem[];
 }
 
-const MenuList: React.FC = () => {
+const MenuList: React.FC<MenuListProps> = ({ currency }) => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -29,7 +34,6 @@ const MenuList: React.FC = () => {
   if (loading) return <p className="text-center mt-10 text-gray-600">Loading menu...</p>;
   if (error) return <p className="text-center mt-10 text-red-600">{error}</p>;
 
-  // Group by category type
   const groupedItems = menuItems.reduce<GroupedItems>((acc, item) => {
     if (!acc[item.type]) acc[item.type] = [];
     acc[item.type].push(item);
@@ -43,7 +47,7 @@ const MenuList: React.FC = () => {
           <h2 className="text-2xl font-bold capitalize text-gray-800 mb-4">{type}</h2>
           <div className="flex overflow-x-auto gap-4 pb-2">
             {items.map((item) => (
-              <MenuCard key={item.id} item={item} />
+              <MenuCard key={item.id} item={item} currency={currency} />
             ))}
           </div>
         </div>
