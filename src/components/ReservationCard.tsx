@@ -66,10 +66,10 @@ const ReservationCard: React.FC = () => {
 
   emailjs
     .send(
-      "service_jt736ew",
-      "template_xt97v2j",
-      templateParams,
-      "EgFSeO4IXCeDPPWDL"
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     )
     .then(() => {
       alert(`Reservation confirmation sent to ${email}`);
