@@ -6,7 +6,7 @@ export interface MenuItem {
   rate?: number;
   country: string;
   img: string;
-  type: string; 
+  type: string;
 }
 
 const BASE_URL = "https://free-food-menus-api-two.vercel.app";
@@ -17,9 +17,7 @@ export const fetchMenuItems = async (): Promise<MenuItem[]> => {
     fetch(`${BASE_URL}/${type}`)
       .then((res) => res.json())
       .then((data) =>
-        data
-          .slice(0, 10)
-          .map((item: MenuItem) => ({ ...item, type })) 
+        data.slice(0, 10).map((item: MenuItem) => ({ ...item, type }))
       )
       .catch(() => [])
   );

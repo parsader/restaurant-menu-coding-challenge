@@ -1,7 +1,6 @@
 import React from "react";
 import type { MenuItem } from "../api/menuApi";
 import type { Currency } from "../App";
-import genericFood from "../assets/generic-food.jpg";
 
 interface MenuCardProps {
   item: MenuItem;
@@ -25,21 +24,20 @@ const MenuCard: React.FC<MenuCardProps> = ({ item, currency }) => {
   const symbol = currencySymbols[currency];
 
   return (
-    <div className="w-64 flex-shrink-0 rounded-2xl shadow-md bg-white overflow-hidden hover:shadow-lg transition-shadow duration-200">
-      <img
-        src={item.img || genericFood}
-        alt={item.name}
-        className="w-full h-40 object-cover"
-        onError={(e) => (e.currentTarget.src = genericFood)}
-      />
-      <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-800">{item.name}</h3>
-        <p className="text-sm text-gray-600 line-clamp-2">{item.dsc}</p>
-        <p className="mt-2 text-indigo-600 font-bold">
-          {symbol}
-          {convertedPrice.toFixed(2)}
-        </p>
-        {/* <p className="text-xs text-gray-500 mt-1">{item.country}</p> */}
+    <div className="py-6 border-b border-[#e8dcc8]">
+      <div className="flex justify-between items-start gap-4">
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold text-[#2d2d2d] mb-2">
+            {item.name}
+          </h3>
+          <p className="text-sm text-[#6b6b6b] leading-relaxed">{item.dsc}</p>
+        </div>
+        <div className="shrink-0">
+          <p className="text-lg font-semibold text-[#2d2d2d]">
+            {symbol}
+            {convertedPrice.toFixed(2)}
+          </p>
+        </div>
       </div>
     </div>
   );

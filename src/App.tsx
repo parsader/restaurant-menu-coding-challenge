@@ -10,14 +10,17 @@ const App: React.FC = () => {
   const [currency, setCurrency] = useState<Currency>("USD");
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#f5f1e8]">
       <Navbar currency={currency} onCurrencyChange={setCurrency} />
-      <main className="p-4 pt-24">
+      <main className="pt-24">
         <div>
           <MenuList currency={currency} />
         </div>
-        <div className="flex justify-start ml-8 mt-10">
-          <ReservationCard /> 
+        <div
+          id="reservation-section"
+          className="flex justify-center mt-2 mb-8 px-4"
+        >
+          <ReservationCard />
         </div>
       </main>
     </div>
